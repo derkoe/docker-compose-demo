@@ -1,0 +1,15 @@
+version: '2'
+services:
+  web:
+    build: .
+    environment:
+      - SPRING_PROFILES_ACTIVE=cloud
+    ports:
+      - "8085:8080"
+    depends_on:
+      - database
+  database:
+    image: "postgres:9-alpine"
+    environment:
+      - POSTGRES_USER=dockerdemo
+      - POSTGRES_PASSWORD=dockerdemo
